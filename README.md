@@ -1,4 +1,4 @@
-Calculadora Interativa
+🧮 Calculadora Interativa
 
 
 A Calculadora Interativa é um projeto desenvolvido para oferecer uma experiência moderna e prática ao realizar cálculos básicos. Com um design estilizado, efeitos de gradiente e interação responsiva, esta calculadora é ideal para quem busca funcionalidade e estilo em uma única aplicação.
