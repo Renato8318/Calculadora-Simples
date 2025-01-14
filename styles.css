@@ -1,0 +1,162 @@
+/* Estilo global */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #1a237e, #673ab7); /* Degradê suave de azul escuro para roxo */
+    color: #ffffff;
+    flex-direction: column; /* Para alinhar verticalmente o cabeçalho e a calculadora */
+}
+
+/* Cabeçalho */
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 36px;
+    color: #ffffff;
+    text-align: center;
+    font-family: 'Roboto', sans-serif; /* Fonte para o título */
+    letter-spacing: 2px; /* Distância entre as letras */
+}
+
+/* Estilo da calculadora */
+.calculator {
+    background: #333333; /* Fundo da calculadora mais escuro */
+    padding: 20px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5), 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombreamento mais intenso */
+    width: 320px;
+}
+
+/* Display */
+.display {
+    margin-bottom: 20px;
+}
+
+#result {
+    width: 100%;
+    height: 60px;
+    font-size: 28px;
+    text-align: right;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 15px;
+    background-color: #4d4d4d; /* Fundo do visor mais escuro */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    color: #ffffff; /* Texto branco para contraste */
+    font-family: 'Roboto', sans-serif; /* Fonte para os números */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+/* Botões */
+button {
+    height: 60px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px; /* Bordas mais arredondadas */
+    background: linear-gradient(145deg, #555555, #666666); /* Gradiente suave */
+    color: #ffffff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6), 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombras mais marcantes */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* Transição suave */
+    font-family: 'Monaco', monospace; /* Fonte para os botões */
+}
+
+button:hover {
+    background: linear-gradient(145deg, #666666, #555555);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombras mais intensas ao passar o mouse */
+    transform: translateY(-6px); /* Efeito de "elevação" mais forte */
+    filter: brightness(1.3); /* Aumenta o brilho do botão ao passar o mouse */
+}
+
+button:active {
+    background: linear-gradient(145deg, #444444, #555555); /* Efeito de "pressão" */
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra interna ao pressionar */
+    transform: translateY(2px); /* Efeito de "afundamento" ao pressionar */
+}
+
+/* Botões de ação */
+button:nth-child(4n) {
+    background: linear-gradient(145deg, #d32f2f, #f44336); /* Vermelho ajustado para melhor contraste */
+}
+
+button:nth-child(4n):hover {
+    background: linear-gradient(145deg, #f44336, #d32f2f);
+    filter: brightness(1.3); /* Aumenta o brilho no hover */
+}
+
+button:nth-child(17) {
+    background: linear-gradient(145deg, #2e7d32, #388e3c); /* Verde ajustado para melhor contraste */
+}
+
+button:nth-child(17):hover {
+    background: linear-gradient(145deg, #388e3c, #2e7d32);
+    filter: brightness(1.3); /* Aumenta o brilho no hover */
+}
+
+/* Botões com acessibilidade */
+button[aria-label="Clear"] {
+    background: linear-gradient(145deg, #d32f2f, #f44336); /* Cor do botão C */
+}
+
+button[aria-label="Clear"]:hover {
+    background: linear-gradient(145deg, #f44336, #d32f2f);
+    filter: brightness(1.3); /* Aumenta o brilho no hover */
+}
+
+button[aria-label="Equals"] {
+    background: linear-gradient(145deg, #2e7d32, #388e3c); /* Cor do botão = */
+}
+
+button[aria-label="Equals"]:hover {
+    background: linear-gradient(145deg, #388e3c, #2e7d32);
+    filter: brightness(1.3); /* Aumenta o brilho no hover */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .calculator {
+        width: 90%;
+    }
+
+    #result {
+        font-size: 24px;
+        height: 50px;
+    }
+
+    button {
+        font-size: 18px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .calculator {
+        width: 100%;
+    }
+
+    #result {
+        font-size: 20px;
+        height: 45px;
+    }
+
+    button {
+        font-size: 16px;
+        height: 45px;
+    }
+}
+
