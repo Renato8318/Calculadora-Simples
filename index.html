@@ -1,38 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Dark Mode</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        // Configuração simples para cores Dark Mode
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#1f2937',     
+                        'calc-bg': '#374151',     
+                        'display-bg': '#4b5563',  
+                        'op-color': '#f59e0b',    
+                        'op-hover': '#d97706',    
+                        'equal-color': '#10b981', 
+                    },
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-  <div class="calculator">
-    <div class="display">
-      <input type="text" id="result" disabled aria-label="Display">
+<body class="flex justify-center items-center min-h-screen bg-dark-bg text-white font-sans">
+    
+    <div class="calculator w-[90%] max-w-sm sm:max-w-md lg:max-w-lg bg-calc-bg p-6 rounded-2xl shadow-2xl">
+        <h1 class="text-xl font-bold text-center mb-4 text-white">Calculadora Digital</h1>
+
+        <div class="mb-5">
+            <input 
+                type="text" 
+                id="result" 
+                disabled 
+                value=""
+                class="w-full h-16 sm:h-20 text-4xl sm:text-5xl text-right p-3 rounded-xl bg-display-bg border-none text-white focus:outline-none"
+            >
+        </div>
+
+        <div class="buttons grid grid-cols-4 gap-3">
+            
+            <button onclick="clearResult()" class="h-16 sm:h-20 text-xl sm:text-2xl font-semibold rounded-full bg-gray-500 hover:bg-gray-600 transition duration-150">C</button>
+            <button onclick="calculateSquareRoot()" class="h-16 sm:h-20 text-xl sm:text-2xl font-semibold rounded-full bg-gray-500 hover:bg-gray-600 transition duration-150">√</button>
+            <button onclick="calculatePercentage()" class="h-16 sm:h-20 text-xl sm:text-2xl font-semibold rounded-full bg-gray-500 hover:bg-gray-600 transition duration-150">%</button>
+            <button onclick="appendValue('/')" class="h-16 sm:h-20 text-xl sm:text-2xl font-semibold rounded-full bg-op-color hover:bg-op-hover transition duration-150">/</button>
+            
+            <button onclick="appendValue('7')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">7</button>
+            <button onclick="appendValue('8')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">8</button>
+            <button onclick="appendValue('9')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">9</button>
+            <button onclick="appendValue('*')" class="h-16 sm:h-20 text-xl sm:text-2xl font-semibold rounded-full bg-op-color hover:bg-op-hover transition duration-150">*</button>
+            
+            <button onclick="appendValue('4')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">4</button>
+            <button onclick="appendValue('5')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">5</button>
+            <button onclick="appendValue('6')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">6</button>
+            <button onclick="appendValue('-')" class="h-16 sm:h-20 text-xl sm:text-2xl font-semibold rounded-full bg-op-color hover:bg-op-hover transition duration-150">-</button>
+
+            <button onclick="appendValue('1')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">1</button>
+            <button onclick="appendValue('2')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">2</button>
+            <button onclick="appendValue('3')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">3</button>
+            <button onclick="appendValue('+')" class="h-16 sm:h-20 text-xl sm:text-2xl font-semibold rounded-full bg-op-color hover:bg-op-hover transition duration-150">+</button>
+            
+            <button onclick="appendValue('0')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150 col-span-2">0</button>
+            <button onclick="appendValue('.')" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-gray-600 hover:bg-gray-500 transition duration-150">.</button>
+            <button onclick="calculateResult()" class="h-16 sm:h-20 text-2xl sm:text-3xl font-semibold rounded-full bg-equal-color hover:opacity-80 transition duration-150">=</button>
+        </div>
     </div>
-    <div class="buttons">
-      <button onclick="clearResult()" aria-label="Clear">C</button>
-      <button onclick="appendValue('/')" aria-label="Divide">/</button>
-      <button onclick="appendValue('*')" aria-label="Multiply">*</button>
-      <button onclick="appendValue('-')" aria-label="Subtract">-</button>
-      <button onclick="appendValue('7')" aria-label="Seven">7</button>
-      <button onclick="appendValue('8')" aria-label="Eight">8</button>
-      <button onclick="appendValue('9')" aria-label="Nine">9</button>
-      <button onclick="appendValue('+')" aria-label="Add">+</button>
-      <button onclick="appendValue('4')" aria-label="Four">4</button>
-      <button onclick="appendValue('5')" aria-label="Five">5</button>
-      <button onclick="appendValue('6')" aria-label="Six">6</button>
-      <button onclick="calculateResult()" aria-label="Equals">=</button>
-      <button onclick="appendValue('1')" aria-label="One">1</button>
-      <button onclick="appendValue('2')" aria-label="Two">2</button>
-      <button onclick="appendValue('3')" aria-label="Three">3</button>
-      <button onclick="appendValue('0')" aria-label="Zero">0</button>
-      <button onclick="appendValue('.')">.</button>
-      <button onclick="calculateSquareRoot()" aria-label="Square Root">√</button>
-      <button onclick="calculatePercentage()" aria-label="Percentage">%</button>
-    </div>
-  </div>
-  <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
